@@ -1,6 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { Config, JsonDB } from 'node-json-db';
 import { v4 as uuidv4 } from 'uuid';
+import { CreateTaskDto } from './dto/create-task.dto';
+import { TaskStatus } from './entities/tasks.entity';
+import { UpdateTaskDto } from './dto/update-task.dto';
 
 @Injectable()
 export class TasksService {
@@ -14,12 +17,23 @@ export class TasksService {
     return await this.tasks.getData(`/${key}`);
   }
 
-  async create(task) {
+  async create(task: CreateTaskDto) {
     const key = uuidv4();
-    return await this.tasks.push(`/${key}`, task);
+    const createdTask = await this.tasks.push(`/${key}`, {
+      ...task,
+      id: key,
+      status: TaskStatus.OPEN,
+    });
+    return createdTask;
+  }
+  async update(id: string, updatedTask: UpdateTaskDto) {
+    const task = await this.tasks.push(`/${id}`, {
+      ...updatedTask,
+    });
+    return task;
   }
 
-  async delete(id) {
+  async delete(id: string) {
     return await this.tasks.delete(`/${id}`);
   }
 }
