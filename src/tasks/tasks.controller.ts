@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 
 @Controller('tasks')
 export class TasksController {
@@ -8,17 +8,17 @@ export class TasksController {
   }
 
   @Get(':id')
-  findOne(id: string) {
+  findOne(@Param('id') id: string) {
     return `This action returns a #${id} task`;
   }
 
   @Post()
   create(@Body() body: any) {
-    return 'This action adds a new task = ' + body;
+    return `This action adds a new task with name!!!!! ${body.name} `;
   }
 
   @Delete(':id')
-  remove(id: string) {
+  remove(@Param('id') id: string) {
     return `This action removes a #${id} task`;
   }
 }
