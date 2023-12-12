@@ -1,18 +1,25 @@
-import { Injectable } from '@nestjs/common';
-import { Config, JsonDB } from 'node-json-db';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { v4 as uuid } from 'uuid';
 import { CreateCategoryDto } from './dto/create-category.dto';
+import { db } from 'src/main';
 
 @Injectable()
 export class CategoriesService {
-  private categories = new JsonDB(new Config('categories', true, false, '/'));
-
   async findAll() {
-    return this.categories.getData('/categories');
+    return await db.getData('/categories');
   }
 
   async create(category: CreateCategoryDto) {
     const categoryKey = uuid();
-    this.categories.push(`/${categoryKey}`, { ...category, id: categoryKey });
+    const categories = await db.getData('/categories');
+
+    const existingCategory = Object.entries(categories)
+      .flat(Infinity)
+      .some((item: any) => item.name === category.name);
+    if (existingCategory) {
+      throw new ConflictException('Category already exists');
+    }
+
+    db.push(`/categories/${categoryKey}`, { ...category, id: categoryKey });
   }
 }

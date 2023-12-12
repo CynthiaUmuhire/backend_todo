@@ -1,0 +1,26 @@
+{
+    "tasks": {
+        "7969a997-7513-495b-ba40-b1413c9ef651": {
+            "title": "At the work",
+            "description": "Cook for everyone",
+            "id": "7969a997-7513-495b-ba40-b1413c9ef651",
+            "status": "OPEN"
+        },
+        "66938b0f-f97e-4a75-8e25-3a473153d83a": {
+            "title": " nothing  ",
+            "description": "  waste my time",
+            "id": "66938b0f-f97e-4a75-8e25-3a473153d83a",
+            "status": "OPEN"
+        }
+    },
+    "categories": {
+        "02aa0dad-1ecc-43ed-88d5-5e81bf0c5012": {
+            "name": "eat",
+            "id": "02aa0dad-1ecc-43ed-88d5-5e81bf0c5012"
+        },
+        "cf4203de-8a86-4598-9b0d-278dc381c847": {
+            "name": "home",
+            "id": "cf4203de-8a86-4598-9b0d-278dc381c847"
+        }
+    }
+}
