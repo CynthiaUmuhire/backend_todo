@@ -28,7 +28,7 @@ export class TasksService {
   }
   async create(task: CreateTaskDto) {
     const categoryPosition = await db.getIndex(
-      '/categories[]',
+      '/categories',
       task.category,
       'categoryName',
     );
@@ -45,7 +45,7 @@ export class TasksService {
       });
       return taskCreated;
     } catch (error) {
-      throw new ConflictException('Task could not be created');
+      throw new ConflictException(error.message);
     }
   }
   async update(id: string, updatedTask: UpdateTaskDto) {

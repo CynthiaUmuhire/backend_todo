@@ -17,17 +17,17 @@ export class TasksRepository {
 
   async create(task: Tasks) {
     const key = uuidv4();
-    const createdTask = await db.push(`/tasks[]`, {
+    await db.push(`/tasks[]`, {
       ...task,
       id: key,
     });
-    return createdTask;
+    return task;
   }
   async update(id: string, updatedTask: UpdateTaskDto) {
     const position = await db.getIndex(`/tasks`, id);
     const Originaltask = await db.getData(`/tasks[${position}]`);
 
-    const task = await db.push(
+    await db.push(
       `/tasks[${position}]`,
       {
         ...Originaltask,
@@ -35,7 +35,7 @@ export class TasksRepository {
       },
       false,
     );
-    return task;
+    return updatedTask;
   }
 
   async delete(id: string) {

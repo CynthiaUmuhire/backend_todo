@@ -3,48 +3,25 @@
         {
             "title": "Dance",
             "description": "to Bon Jovi",
-            "category": "Life",
-            "categoryId": "345532e2-227d-403f-9a07-26711e92465e",
+            "category": "Sing",
+            "categoryId": "df43707a-a93c-49f9-b83f-148db71cc244",
             "status": "OPEN",
-            "id": "ba8959f2-7f5e-42e5-9f84-94b347d968c6"
+            "id": "6aba3c74-a249-4156-8176-94da9e60ae91"
         },
         {
             "title": "Dance",
             "description": "to Bon Jovi",
-            "category": "Life",
-            "categoryId": "345532e2-227d-403f-9a07-26711e92465e",
+            "category": "Sing",
+            "categoryId": "df43707a-a93c-49f9-b83f-148db71cc244",
             "status": "OPEN",
-            "id": "759e180d-d0ee-4807-a307-e1bce6cc0f6b"
-        },
-        {
-            "title": "Dance",
-            "description": "to Bon Jovi",
-            "category": "Life",
-            "categoryId": "345532e2-227d-403f-9a07-26711e92465e",
-            "status": "OPEN",
-            "id": "2f4eea53-ae31-4306-96cd-95408ef179e7"
-        },
-        {
-            "title": "Dance",
-            "description": "to Bon Jovi",
-            "category": "Life",
-            "categoryId": "345532e2-227d-403f-9a07-26711e92465e",
-            "status": "OPEN",
-            "id": "165ed074-706c-4ad1-8ebd-00c3edc2d79e"
+            "id": "54470841-4db9-447f-81f9-4f1fee642f5b"
         }
     ],
     "categories": [
         {
-            "name": "Sing",
-            "id": "57c03fdc-c0c0-44e5-b770-a6dadaf77051"
-        },
-        {
-            "name": "Sing",
-            "id": "f434109b-2999-43dc-a9b8-e72b2b79dcef"
-        },
-        {
-            "categoryName": "Sing",
-            "id": "345532e2-227d-403f-9a07-26711e92465e"
+            "tasks": [
+                {}
+            ]
         }
     ]
 }
