@@ -1,40 +1,41 @@
-import { Injectable } from '@nestjs/common';
-import { v4 as uuidv4 } from 'uuid';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
+import { TasksRepository } from './tasks.repository';
 import { CreateTaskDto } from './dto/create-task.dto';
-import { TaskStatus } from './entities/tasks.entity';
 import { UpdateTaskDto } from './dto/update-task.dto';
-import { db } from 'src/main';
 
 @Injectable()
 export class TasksService {
+  constructor(private readonly tasksRepository: TasksRepository) {}
   async findAll() {
-    return await db.getData('/tasks');
+    try {
+      return await this.tasksRepository.findAll();
+    } catch (error) {
+      throw new NotFoundException('Tasks not found');
+    }
   }
-
   async findOne(key: string) {
-    return await db.getData(`/tasks/${key}`);
+    try {
+      return await this.tasksRepository.findOne(key);
+    } catch (error) {
+      throw new NotFoundException('Task with the specified id is not found');
+    }
   }
-
   async create(task: CreateTaskDto) {
-    const key = uuidv4();
-    const createdTask = await db.push(`/tasks/${key}`, {
-      ...task,
-      id: key,
-      status: TaskStatus.OPEN,
-    });
-    return createdTask;
+    try {
+      const taskCreated = await this.tasksRepository.create(task);
+      return taskCreated;
+    } catch (error) {
+      throw new ConflictException('Task could not be created');
+    }
   }
   async update(id: string, updatedTask: UpdateTaskDto) {
-    const Originaltask = await db.getData(`/tasks/${id}`);
-
-    const task = await db.push(`/tasks/${id}[]`, {
-      ...Originaltask,
-      ...updatedTask,
-    });
-    return task;
+    return await this.tasksRepository.update(id, updatedTask);
   }
-
   async delete(id: string) {
-    return await db.delete(`/tasks/${id}`);
+    return await this.tasksRepository.delete(id);
   }
 }
