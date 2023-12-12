@@ -8,6 +8,6 @@ export class Tasks {
   id: string;
   title: string;
   description: string;
-  status: boolean;
+  status: TaskStatus;
   categoryId: string;
 }

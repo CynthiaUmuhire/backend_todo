@@ -1,9 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { v4 as uuidv4 } from 'uuid';
-import { CreateTaskDto } from './dto/create-task.dto';
-import { TaskStatus } from './entities/tasks.entity';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { db } from 'src/main';
+import { Tasks } from './entities/tasks.entity';
 
 @Injectable()
 export class TasksRepository {
@@ -12,36 +11,35 @@ export class TasksRepository {
   }
 
   async findOne(key: string) {
-    return await db.getData(`/tasks/${key}`);
+    const position = await db.getIndex(`/tasks`, key);
+    return await db.getData(`/tasks[${position}]`);
   }
 
-  async create(task: CreateTaskDto) {
+  async create(task: Tasks) {
     const key = uuidv4();
-    const categories = await db.getData('/categories');
-    const category = Object.entries(categories)
-      .flat(Infinity)
-      .find((item: any) => item.name === task.category);
-    if (!category)
-      await db.push(`/categories/${key}`, { name: task.category, id: key });
-
-    const createdTask = await db.push(`/tasks/${key}`, {
+    const createdTask = await db.push(`/tasks[]`, {
       ...task,
       id: key,
-      status: TaskStatus.OPEN,
     });
     return createdTask;
   }
   async update(id: string, updatedTask: UpdateTaskDto) {
-    const Originaltask = await db.getData(`/tasks/${id}`);
+    const position = await db.getIndex(`/tasks`, id);
+    const Originaltask = await db.getData(`/tasks[${position}]`);
 
-    const task = await db.push(`/tasks/${id}[]`, {
-      ...Originaltask,
-      ...updatedTask,
-    });
+    const task = await db.push(
+      `/tasks[${position}]`,
+      {
+        ...Originaltask,
+        ...updatedTask,
+      },
+      false,
+    );
     return task;
   }
 
   async delete(id: string) {
-    return await db.delete(`/tasks/${id}`);
+    const position = await db.getIndex(`/tasks`, id);
+    return await db.delete(`/tasks[${position}]`);
   }
 }

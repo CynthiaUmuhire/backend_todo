@@ -1,13 +1,13 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
-import { Config, JsonDB } from 'node-json-db';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import dataBase from './helpers/dataBase';
 
-export const db = new JsonDB(new Config('todo-db', true, true, '/'));
-
+export let db: any;
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  db = await dataBase();
   const options = new DocumentBuilder()
     .setTitle('Todo API')
     .setDescription('This is a Todo API')

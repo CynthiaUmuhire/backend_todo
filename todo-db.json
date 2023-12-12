@@ -1,66 +1,50 @@
 {
-    "tasks": {
-        "7969a997-7513-495b-ba40-b1413c9ef651": {
-            "title": "At the work",
-            "description": "Cook for everyone",
-            "id": "7969a997-7513-495b-ba40-b1413c9ef651",
-            "status": "OPEN"
-        },
-        "66938b0f-f97e-4a75-8e25-3a473153d83a": {
-            "title": " nothing  ",
-            "description": "  waste my time",
-            "id": "66938b0f-f97e-4a75-8e25-3a473153d83a",
-            "status": "OPEN"
-        },
-        "9b216a5c-765a-4c34-b6be-33c4ac76a9d7": {
-            "title": "Dance",
-            "description": "Untilllll",
-            "category": "Life",
-            "id": "9b216a5c-765a-4c34-b6be-33c4ac76a9d7",
-            "status": "OPEN"
-        },
-        "bd48e138-2631-46ae-854d-7eea6b525fd7": {
-            "title": "Dance",
-            "description": "Untilllll",
-            "category": "Life",
-            "id": "bd48e138-2631-46ae-854d-7eea6b525fd7",
-            "status": "OPEN"
-        },
-        "02f04e41-f377-4a74-9712-21ecf77bedc5": {
-            "title": "Dance",
-            "description": "Untilllll",
-            "category": "Life",
-            "id": "02f04e41-f377-4a74-9712-21ecf77bedc5",
-            "status": "OPEN"
-        },
-        "9bb6a0fc-6c0f-4560-a476-0c4ebb5288f3": {
+    "tasks": [
+        {
             "title": "Dance",
             "description": "to Bon Jovi",
             "category": "Life",
-            "id": "9bb6a0fc-6c0f-4560-a476-0c4ebb5288f3",
-            "status": "OPEN"
+            "categoryId": "345532e2-227d-403f-9a07-26711e92465e",
+            "status": "OPEN",
+            "id": "ba8959f2-7f5e-42e5-9f84-94b347d968c6"
+        },
+        {
+            "title": "Dance",
+            "description": "to Bon Jovi",
+            "category": "Life",
+            "categoryId": "345532e2-227d-403f-9a07-26711e92465e",
+            "status": "OPEN",
+            "id": "759e180d-d0ee-4807-a307-e1bce6cc0f6b"
+        },
+        {
+            "title": "Dance",
+            "description": "to Bon Jovi",
+            "category": "Life",
+            "categoryId": "345532e2-227d-403f-9a07-26711e92465e",
+            "status": "OPEN",
+            "id": "2f4eea53-ae31-4306-96cd-95408ef179e7"
+        },
+        {
+            "title": "Dance",
+            "description": "to Bon Jovi",
+            "category": "Life",
+            "categoryId": "345532e2-227d-403f-9a07-26711e92465e",
+            "status": "OPEN",
+            "id": "165ed074-706c-4ad1-8ebd-00c3edc2d79e"
         }
-    },
-    "categories": {
-        "02aa0dad-1ecc-43ed-88d5-5e81bf0c5012": {
-            "name": "eat",
-            "id": "02aa0dad-1ecc-43ed-88d5-5e81bf0c5012"
-        },
-        "cf4203de-8a86-4598-9b0d-278dc381c847": {
-            "name": "home",
-            "id": "cf4203de-8a86-4598-9b0d-278dc381c847"
-        },
-        "dc45d19a-ab59-4443-a556-bf496b63d030": {
-            "name": "Game",
-            "id": "dc45d19a-ab59-4443-a556-bf496b63d030"
-        },
-        "02f04e41-f377-4a74-9712-21ecf77bedc5": {
-            "name": "Life",
-            "id": "02f04e41-f377-4a74-9712-21ecf77bedc5"
-        },
-        "8df0074c-e8c1-4c29-bda1-2cb8cfb58c72": {
+    ],
+    "categories": [
+        {
             "name": "Sing",
-            "id": "8df0074c-e8c1-4c29-bda1-2cb8cfb58c72"
+            "id": "57c03fdc-c0c0-44e5-b770-a6dadaf77051"
+        },
+        {
+            "name": "Sing",
+            "id": "f434109b-2999-43dc-a9b8-e72b2b79dcef"
+        },
+        {
+            "categoryName": "Sing",
+            "id": "345532e2-227d-403f-9a07-26711e92465e"
         }
-    }
+    ]
 }

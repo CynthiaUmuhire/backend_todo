@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString, MinLength } from 'class-validator';
+import { CreateTaskDto } from 'src/tasks/dto/create-task.dto';
 
 export class CreateCategoryDto {
   id: string;
@@ -11,5 +12,6 @@ export class CreateCategoryDto {
     example: 'Studies',
     required: true,
   })
-  name: string;
+  categoryName: string;
+  tasks: CreateTaskDto[];
 }
