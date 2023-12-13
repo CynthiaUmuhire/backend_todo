@@ -3,15 +3,15 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { TasksRepository } from './tasks.repository';
+import { db } from '../helpers/dataBase';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
-import { db } from 'src/main';
 import { TaskStatus } from './entities/tasks.entity';
+import { TasksRepository } from './tasks.repository';
 
 @Injectable()
 export class TasksService {
-  constructor(private readonly tasksRepository: TasksRepository) {}
+  constructor(private tasksRepository: TasksRepository) {}
   async findAll() {
     try {
       return await this.tasksRepository.findAll();

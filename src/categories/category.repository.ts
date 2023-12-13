@@ -1,7 +1,7 @@
 import { Injectable, ServiceUnavailableException } from '@nestjs/common';
 import { v4 as uuid } from 'uuid';
 import { CreateCategoryDto } from './dto/create-category.dto';
-import { db } from 'src/main';
+import { db } from '../helpers/dataBase';
 
 @Injectable()
 export class CategoryRepository {

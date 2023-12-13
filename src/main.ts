@@ -4,10 +4,11 @@ import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import dataBase from './helpers/dataBase';
 
-export let db: any;
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  db = await dataBase();
+
+  await dataBase();
+
   const options = new DocumentBuilder()
     .setTitle('Todo API')
     .setDescription('This is a Todo API')

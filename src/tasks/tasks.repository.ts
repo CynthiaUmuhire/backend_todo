@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { v4 as uuidv4 } from 'uuid';
 import { UpdateTaskDto } from './dto/update-task.dto';
-import { db } from 'src/main';
+import { db } from '../helpers/dataBase';
 import { Tasks } from './entities/tasks.entity';
 
 @Injectable()

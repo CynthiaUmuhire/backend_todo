@@ -3,9 +3,11 @@ import {
   Controller,
   Delete,
   Get,
+  Inject,
   Param,
   Patch,
   Post,
+  forwardRef,
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
@@ -15,7 +17,10 @@ import { ApiTags } from '@nestjs/swagger';
 @ApiTags('Tasks')
 @Controller('tasks')
 export class TasksController {
-  constructor(private readonly tasksService: TasksService) {}
+  constructor(
+    @Inject(forwardRef(() => TasksService))
+    private readonly tasksService: TasksService,
+  ) {}
   @Get()
   findAll() {
     return this.tasksService.findAll();

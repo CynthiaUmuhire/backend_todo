@@ -1,16 +1,21 @@
 import {
   ConflictException,
+  Inject,
   Injectable,
   NotFoundException,
+  forwardRef,
 } from '@nestjs/common';
 import { CategoryRepository } from './category.repository';
 import { CreateCategoryDto } from './dto/create-category.dto';
-import { db } from 'src/main';
+import { db } from '../helpers/dataBase';
 import { Tasks } from 'src/tasks/entities/tasks.entity';
 
 @Injectable()
 export class CategoriesService {
-  constructor(private readonly categoryRepository: CategoryRepository) {}
+  constructor(
+    @Inject(forwardRef(() => CategoryRepository))
+    private categoryRepository: CategoryRepository,
+  ) {}
   async findAll() {
     try {
       return await this.categoryRepository.findAll();
