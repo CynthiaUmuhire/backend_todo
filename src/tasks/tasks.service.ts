@@ -21,9 +21,12 @@ export class TasksService {
   }
   async findOne(key: string) {
     try {
-      return await this.tasksRepository.findOne(key);
+      const task = await this.tasksRepository.find(key);
+      if (!task)
+        throw new NotFoundException('Task with the specified id is not found');
+      return task;
     } catch (error) {
-      throw new NotFoundException('Task with the specified id is not found');
+      throw error;
     }
   }
   async create(task: CreateTaskDto) {
@@ -49,12 +52,23 @@ export class TasksService {
     }
   }
   async update(id: string, updatedTask: UpdateTaskDto) {
-    const task = await this.tasksRepository.findOne(id);
-    if (!task)
-      throw new NotFoundException('Task with the specified id is not found');
-    return await this.tasksRepository.update(id, updatedTask);
+    try {
+      const position = await db.getIndex(`/tasks`, id);
+      if (position < 0)
+        throw new NotFoundException('Task with the specified id is not found');
+      return await this.tasksRepository.update(position + '', updatedTask);
+    } catch (error) {
+      throw error;
+    }
   }
   async delete(id: string) {
-    return await this.tasksRepository.delete(id);
+    try {
+      const index = await db.getIndex(`/tasks`, id);
+      if (index < 0)
+        throw new NotFoundException('Task with the specified id is not found');
+      return await this.tasksRepository.delete(index + '');
+    } catch (error) {
+      throw error;
+    }
   }
 }

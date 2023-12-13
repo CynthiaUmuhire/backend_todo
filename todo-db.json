@@ -5,16 +5,8 @@
             "description": "to Bon Jovi",
             "category": "Sing",
             "categoryId": "df43707a-a93c-49f9-b83f-148db71cc244",
-            "status": "OPEN",
+            "status": "DONE",
             "id": "6aba3c74-a249-4156-8176-94da9e60ae91"
-        },
-        {
-            "title": "Dance",
-            "description": "to Bon Jovi",
-            "category": "Sing",
-            "categoryId": "df43707a-a93c-49f9-b83f-148db71cc244",
-            "status": "OPEN",
-            "id": "54470841-4db9-447f-81f9-4f1fee642f5b"
         }
     ],
     "categories": [
@@ -22,6 +14,14 @@
             "tasks": [
                 {}
             ]
+        },
+        {
+            "categoryName": "Sing",
+            "id": "91add9b9-817f-414d-9de4-f457934cdfe8"
+        },
+        {
+            "categoryName": "Dance",
+            "id": "5a131d94-e636-4ae1-947c-f6d039b9a275"
         }
     ]
 }

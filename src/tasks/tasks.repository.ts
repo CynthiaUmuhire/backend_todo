@@ -7,12 +7,15 @@ import { Tasks } from './entities/tasks.entity';
 @Injectable()
 export class TasksRepository {
   async findAll() {
-    return await db.getData('/tasks');
+    const tasks = await db.getData('/tasks');
+    return tasks;
+  }
+  async find(key: string) {
+    return await db.find<Tasks>(`/tasks`, (task: Tasks) => task.id === key);
   }
 
   async findOne(key: string) {
-    const position = await db.getIndex(`/tasks`, key);
-    return await db.getData(`/tasks[${position}]`);
+    return await db.getData(`/tasks[${key}]`);
   }
 
   async create(task: Tasks) {
@@ -24,11 +27,10 @@ export class TasksRepository {
     return task;
   }
   async update(id: string, updatedTask: UpdateTaskDto) {
-    const position = await db.getIndex(`/tasks`, id);
-    const Originaltask = await db.getData(`/tasks[${position}]`);
+    const Originaltask = await db.getData(`/tasks[${id}]`);
 
     await db.push(
-      `/tasks[${position}]`,
+      `/tasks[${id}]`,
       {
         ...Originaltask,
         ...updatedTask,
@@ -39,7 +41,6 @@ export class TasksRepository {
   }
 
   async delete(id: string) {
-    const position = await db.getIndex(`/tasks`, id);
-    return await db.delete(`/tasks[${position}]`);
+    return await db.delete(`/tasks[${id}]`);
   }
 }
