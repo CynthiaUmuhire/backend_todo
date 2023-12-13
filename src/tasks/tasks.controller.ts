@@ -13,6 +13,7 @@ import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { Tasks } from './entities/tasks.entity';
 
 @ApiTags('Tasks')
 @Controller('tasks')
@@ -22,26 +23,25 @@ export class TasksController {
     private readonly tasksService: TasksService,
   ) {}
   @Get()
-  findAll() {
-    return this.tasksService.findAll();
+  async findAll() {
+    return await this.tasksService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.tasksService.findOne(id);
+  async findOne(@Param('id') id: string) {
+    return await this.tasksService.findOne(id);
   }
 
   @Post()
-  create(@Body() body: CreateTaskDto) {
-    return this.tasksService.create(body);
+  async create(@Body() body: CreateTaskDto): Promise<Tasks> {
+    return await this.tasksService.create(body);
   }
-
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.tasksService.delete(id);
+  async remove(@Param('id') id: string) {
+    return await this.tasksService.delete(id);
   }
   @Patch(':id')
-  update(@Param('id') id: string, @Body() body: UpdateTaskDto) {
-    return this.tasksService.update(id, body);
+  async update(@Param('id') id: string, @Body() body: UpdateTaskDto) {
+    return await this.tasksService.update(id, body);
   }
 }
