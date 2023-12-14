@@ -11,8 +11,10 @@ export class CategoryRepository {
 
   async create(category: CreateCategoryDto) {
     const categoryKey = uuid();
-    db.push(`/categories[]`, { ...category, id: categoryKey });
+    await db.push(`/categories[]`, { ...category, id: categoryKey });
+    return category;
   }
+
   async delete(id: string) {
     try {
       const position = await db.getIndex(`/categories`, id);
